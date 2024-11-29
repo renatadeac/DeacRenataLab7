@@ -6,15 +6,19 @@ namespace DeacRenataLab7
     {
         int count = 0;
 
+        // Proprietate pentru lista de studenți
         public ObservableCollection<Student> Students { get; set; }
+
         public MainPage()
         {
             InitializeComponent();
+
+            // Inițializează lista de studenți
             Students = new ObservableCollection<Student>
             {
-                new Student { Name = "Ion Pop", Description = "Student la Informatica", ImagePath = "ion_pop.jpg" },
-                new Student { Name = "Marta Ionescu", Description = "Studentă la Matematică", ImagePath = "marta_ionescu.jpg" },
-                new Student { Name = "Andrei Alexandru", Description = "Student la Fizică", ImagePath = "andrei_alexandru.jpg" }
+                new Student { Name = "Ion Popescu", Description = "Student la Informatica", ImagePath = "ion_popescu.jpg" },
+                new Student { Name = "Maria Ionescu", Description = "Studentă la Matematică", ImagePath = "maria_ionescu.jpg" },
+                new Student { Name = "Andrei Gheorghe", Description = "Student la Fizică", ImagePath = "andrei_gheorghe.jpg" }
             };
 
             // Setează BindingContext-ul pentru a lega datele cu interfața
@@ -33,11 +37,12 @@ namespace DeacRenataLab7
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
+
+    // Definirea modelului Student
     public class Student
     {
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = "Nicio descriere disponibilă";
-        public string ImagePath { get; set; } = string.Empty;
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string ImagePath { get; set; }
     }
 }
-
