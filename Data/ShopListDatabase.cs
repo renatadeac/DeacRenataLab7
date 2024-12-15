@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using DeacRenataLab7.Models;
 
 
+
 namespace DeacRenataLab7.Data
 {
     public class ShopListDatabase
@@ -25,6 +26,7 @@ namespace DeacRenataLab7.Data
             _database.CreateTableAsync<Product>().Wait();
 
             _database.CreateTableAsync<ListProduct>().Wait();
+            _database.CreateTableAsync<Shop>().Wait();
 
         }
 
@@ -174,6 +176,29 @@ namespace DeacRenataLab7.Data
 
 
 
+        }
+
+        public Task<List<Shop>> GetShopsAsync()
+        {
+            return _database.Table<Shop>().ToListAsync();
+        }
+
+
+        public Task<int> SaveShopAsync(Shop shop)
+        {
+            if (shop.ID != 0)
+            {
+                return _database.UpdateAsync(shop);
+            }
+            else
+            {
+                return _database.InsertAsync(shop);
+            }
+        }
+
+        public Task<int> DeleteShopAsync(Shop shop)
+        {
+            return _database.DeleteAsync(shop);
         }
 
     }
